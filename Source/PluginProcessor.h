@@ -30,6 +30,19 @@ public:
     void getStateInformation (juce::MemoryBlock& destData) override;
     void setStateInformation (const void* data, int sizeInBytes) override;
 
+    juce::AudioProcessorValueTreeState& getValueTreeState() { return apvts; }
+    juce::MidiKeyboardState& getKeyboardState() { return keyboardState; }
+
+    static juce::AudioProcessorValueTreeState::ParameterLayout createParameterLayout();
+
 private:
+    void pushPerformanceControllers (juce::MidiBuffer& midi);
+
+    juce::AudioProcessorValueTreeState apvts;
+    juce::MidiKeyboardState keyboardState;
+
+    int lastPitchBendValue = -1;
+    int lastModWheelValue = -1;
+
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (NewAudioProjectAudioProcessor)
 };
