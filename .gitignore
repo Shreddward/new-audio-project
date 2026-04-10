@@ -1,0 +1,14 @@
+# Build outputs
+build/
+build_*/
+cmake-build-*/
+DerivedData/
+.DerivedData/
+
+# Agent-isolated build dirs
+build_codex/
+build_claude/
+build_gemini/
+
+# macOS
+.DS_Store
