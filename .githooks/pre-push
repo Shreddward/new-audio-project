@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+set -euo pipefail
+b="$(git rev-parse --abbrev-ref HEAD)"
+[[ "$b" == "main" ]] && { echo "Blocked: no pushes on main"; exit 1; }
+[[ "$b" =~ ^(codex/audio-|claude/audio-) ]] || { echo "Blocked: branch must be codex/audio-* or claude/audio-*"; exit 1; }
